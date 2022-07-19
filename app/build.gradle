@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    compileSdk 32
 
     defaultConfig {
         applicationId "com.practice.noteapplication"
@@ -70,8 +70,8 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
 
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.0'
 
-    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+//    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
 }

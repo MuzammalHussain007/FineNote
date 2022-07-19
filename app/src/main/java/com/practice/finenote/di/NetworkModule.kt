@@ -1,6 +1,7 @@
 package com.practice.finenote.di
 
 import com.practice.finenote.api.UserAPI
+import com.practice.finenote.utils.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,7 +18,7 @@ class NetworkModule {
     fun provideRetrofit() : Retrofit{
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("")
+            .baseUrl(BASE_URL)
             .build()
     }
 

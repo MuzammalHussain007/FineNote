@@ -9,7 +9,7 @@ private const val TABLENAME = "Note"
 @Entity(tableName = TABLENAME)
  class RoomDataBaseNoteModal(
  @PrimaryKey(autoGenerate = true)
- @ColumnInfo(name = "NoteID") private val NoteID : Int ,
- @ColumnInfo(name = "Title") private val title : String ,
- @ColumnInfo(name = "Description") private val description : String ,
+   val NoteID : Int ,
+ @ColumnInfo(name = "Title")  val title : String ,
+ @ColumnInfo(name = "Description")  val description : String ,
 )

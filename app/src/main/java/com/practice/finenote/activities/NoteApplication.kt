@@ -1,4 +1,4 @@
-package com.practice.finenote
+package com.practice.finenote.activities
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

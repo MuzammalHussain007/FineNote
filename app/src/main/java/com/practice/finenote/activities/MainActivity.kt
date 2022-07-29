@@ -1,4 +1,4 @@
-package com.practice.finenote
+package com.practice.finenote.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,9 +8,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.practice.finenote.R
 import com.practice.finenote.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var navCotroller: NavController;
     private lateinit var binding: ActivityMainBinding;

@@ -1,16 +1,16 @@
-import LoginFragmentDirections.LoginFragmentDirections
+package com.practice.finenote.fragment.user
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.practice.finenote.R
-import com.practice.finenote.activities.BaseActivity
 import com.practice.finenote.databinding.FragmentLoginBinding
 import com.practice.finenote.fragment.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
+@AndroidEntryPoint
 
-class LoginFragment : BaseFragment() {
+ class LoginFragment : BaseFragment() {
     private lateinit var binding: FragmentLoginBinding
 
 
@@ -26,7 +26,8 @@ class LoginFragment : BaseFragment() {
 
     private fun listener() {
         binding.changeToRegister.setOnClickListener {
-         findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToSignUpFragment())
+            val action = LoginFragmentDirections.actionLoginFragmentToSignUpFragment()
+            findNavController().navigate(action)
         }
         binding.signupBtn.setOnClickListener {
             CreateMessage("Please Wait")

@@ -2,4 +2,13 @@
     <string name="app_name">FineNote</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login">Login</string>
+    <string name="well_come_to_the_account">Well come to the account</string>
+    <string name="user_name">User Name</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="login_here">Login Here</string>
+    <string name="signup">SignUp</string>
+    <string name="create_a_new_account">Create a New Account</string>
 </resources>

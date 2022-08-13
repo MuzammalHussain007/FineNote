@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import com.practice.finenote.R
+import dagger.hilt.android.AndroidEntryPoint
 
 open class BaseActivity : AppCompatActivity() {
     private lateinit var progressDialog: ProgressDialog;

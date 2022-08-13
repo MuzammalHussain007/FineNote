@@ -2,5 +2,5 @@ package com.practice.finenote.utils
 
 object Constants {
     const val TAG = "NoteApplication"
-    const val BASE_URL = "https://notes-api-sample.herokuapp.com/"
+    const val BASE_URL = "https://testprojectadd.herokuapp.com/"
 }

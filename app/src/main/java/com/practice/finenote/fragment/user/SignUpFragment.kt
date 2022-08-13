@@ -1,32 +1,34 @@
 package com.practice.finenote.fragment.user
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-import com.practice.finenote.R
-import com.practice.finenote.SignUpFragmentDirections
+import androidx.fragment.app.viewModels
 import com.practice.finenote.databinding.FragmentLoginBinding
 import com.practice.finenote.databinding.FragmentSignUpBinding
 import com.practice.finenote.fragment.BaseFragment
-
-
-class SignUpFragment : BaseFragment() {
+import com.practice.finenote.modals.UserRequest
+import com.practice.finenote.viewModal.UserViewModal
+import dagger.hilt.android.AndroidEntryPoint
+@AndroidEntryPoint
+ class SignUpFragment : BaseFragment() {
     private lateinit var binding: FragmentSignUpBinding
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        innit(view)
-
+    private val authenticationViewModal by viewModels<UserViewModal>()
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentSignUpBinding.inflate(inflater, container, false);
+        listener()
+         return binding.root;
     }
 
-    private fun innit(view: View) {
-      binding = FragmentSignUpBinding.bind(view)
-        binding.changeToLogin.setOnClickListener {
-          findNavController().navigate(SignUpFragmentDirections.actionSignUpFragmentToLoginFragment())
+    private fun listener() {
+        binding.signupBtn.setOnClickListener {
+            authenticationViewModal.registerUser(UserRequest("abcded@yahoo.com","1212121212","test"))
         }
-
     }
 
 

@@ -6,6 +6,30 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signup"
+            android:textColor="@color/teal_700"
+            android:textSize="80dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/create_a_new_account"
+            android:textColor="@color/teal_700"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -13,7 +37,7 @@
         android:id="@+id/usernameContainer"
         android:layout_height="wrap_content"
         android:focusable="false"
-        android:hint="User Name"
+        android:hint="@string/user_name"
         android:textColorHint="@color/teal_700"
         app:boxStrokeColor="@color/teal_700"
         app:endIconMode="clear_text"
@@ -34,7 +58,7 @@
         android:layout_height="wrap_content"
         android:focusable="false"
         android:id="@+id/emailContainer"
-        android:hint="Email Address"
+        android:hint="@string/email_address"
         android:textColorHint="@color/teal_700"
         app:boxStrokeColor="@color/teal_700"
         app:hintTextColor="@color/teal_700"
@@ -55,7 +79,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusable="false"
-        android:hint="Password"
+        android:hint="@string/password"
         android:id="@+id/passwordContainer"
         app:endIconMode="password_toggle"
         android:textColorHint="@color/teal_700"
@@ -75,7 +99,7 @@
         android:id="@+id/signupBtn"
         android:layout_width="200dp"
         android:layout_height="60dp"
-        android:text="Sign Up"
+        android:text="@string/sign_up"
         android:textColor="@color/white"
         android:textAllCaps="false"
         android:backgroundTint="@color/teal_700"
@@ -85,7 +109,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login Here"
+        android:text="@string/login_here"
         android:textColor="@color/teal_700"
         android:layout_gravity="end"
         android:id="@+id/changeToLogin"

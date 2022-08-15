@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.practice.finenote.api.ErrorHandling
 import com.practice.finenote.databinding.FragmentLoginBinding
 import com.practice.finenote.databinding.FragmentSignUpBinding
@@ -37,7 +38,9 @@ import dagger.hilt.android.AndroidEntryPoint
         authenticationViewModal.userResponseLiveData.observe(viewLifecycleOwner) { it ->
             dissmissDialogue()
             when (it) {
-                is ErrorHandling.Success -> {}
+                is ErrorHandling.Success -> {
+                    findNavController().navigate(SignUpFragmentDirections.actionSignUpFragmentToLoginFragment())
+                }
                 is ErrorHandling.Error -> {
                     showSnackBar(view, it.toString())
                 }

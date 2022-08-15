@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.practice.finenote.api.ErrorHandling
 import com.practice.finenote.databinding.FragmentLoginBinding
 import com.practice.finenote.fragment.BaseFragment
 import com.practice.finenote.modals.UserRequest
 import com.practice.finenote.viewModal.UserViewModal
 import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
-
  class LoginFragment : BaseFragment() {
     private lateinit var binding: FragmentLoginBinding
     private val authenticationViewModal by viewModels<UserViewModal>()
@@ -24,15 +24,38 @@ import dagger.hilt.android.AndroidEntryPoint
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentLoginBinding.inflate(inflater, container, false);
-        listener()
         return binding.root;
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        listener()
+
+    }
+    private fun observeApiData(view: View) {
+        authenticationViewModal.userResponseLiveData.observe(viewLifecycleOwner) { it ->
+            dissmissDialogue()
+            when (it) {
+                is ErrorHandling.Success -> {
+                    findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
+                }
+                is ErrorHandling.Error -> {
+                    showSnackBar(view, it.toString())
+                }
+                is ErrorHandling.Loading -> {
+                    showDialogue()
+                }
+            }
+
+        }
+    }
+
     private fun listener() {
-        binding.changeToRegister.setOnClickListener {
+        binding.changeToLoginToHomeScreen.setOnClickListener {
             val action = LoginFragmentDirections.actionLoginFragmentToSignUpFragment()
             findNavController().navigate(action)
         }
-        binding.signinBtn.setOnClickListener {
+        binding.signinBtn.setOnClickListener { view->
             try {
                 binding.signinBtn.setOnClickListener {
                     val email = binding.signinEmailAddress.text.toString()
@@ -65,6 +88,7 @@ import dagger.hilt.android.AndroidEntryPoint
                         return@setOnClickListener
                     }
                     authenticationViewModal.loginUser(UserRequest(email ,password,""))
+                    observeApiData(view)
                 }
 
             }catch (e : Exception){

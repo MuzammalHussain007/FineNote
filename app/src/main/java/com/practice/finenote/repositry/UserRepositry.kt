@@ -38,7 +38,6 @@ class UserRepositry @Inject constructor(private val userAPI: UserAPI) {
     }
 
     suspend fun logInUser(userRequest: UserRequest){
-        _userResponseMuteableLivedata.postValue(ErrorHandling.Loading())
         val response = userAPI.signin(userRequest)
         Log.d(TAG,""+response.body().toString())
         handleUserResponse(response)

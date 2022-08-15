@@ -22,15 +22,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:background="@drawable/note_curve"
-        android:minHeight="150dp"
+        android:minHeight="100dp"
         >
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/custom_note_description"
-            android:paddingTop="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:padding="10dp"
             android:justificationMode="inter_word"
             android:textColor="@color/black"
             android:textSize="12sp"

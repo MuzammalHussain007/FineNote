@@ -10,5 +10,24 @@
         android:id="@+id/noteRecyclarView"
         tools:listitem="@layout/custom_note_layout" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_notes_found"
+        android:id="@+id/errorMessage"
+        android:layout_centerInParent="true"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:visibility="gone"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_add_24"
+        android:id="@+id/noteaddBtn"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="5dp"/>
+
 
 </RelativeLayout>

@@ -1,14 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.UpdateFragment">
+    android:layout_margin="5dp"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailContainer"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:hint="@string/note_title"
+        android:textColorHint="@color/teal_700"
+        app:boxStrokeColor="@color/teal_700"
+        app:endIconMode="clear_text"
+        app:hintTextColor="@color/teal_700"
+        app:startIconTint="@color/teal_700">
 
-</FrameLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/noteTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:textCursorDrawable="@color/teal_700" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordContainer"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        app:endIconMode="clear_text"
+        android:justificationMode="inter_word"
+        android:hint="@string/note_description"
+        android:textColorHint="@color/teal_700"
+        app:boxStrokeColor="@color/teal_700"
+        app:hintTextColor="@color/teal_700"
+        android:minHeight="120dp"
+        app:startIconTint="@color/teal_700">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/noteDescription"
+            android:minHeight="120dp"
+            android:gravity="top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:textCursorDrawable="@color/teal_700" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/updateNoteBtn"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/teal_700"
+        android:text="@string/update_note"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
+</LinearLayout>

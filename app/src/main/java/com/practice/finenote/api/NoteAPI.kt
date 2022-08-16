@@ -8,17 +8,16 @@ import com.practice.finenote.responses.deleteNote.DeleteNoteResponse
 import com.practice.finenote.responses.getNote.GetNoteResponse
 import com.practice.finenote.responses.updateNote.UpdateNoteResponse
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface NoteAPI {
 
-   @POST("notes/{noteid}")
+   @PUT("notes/{noteid}")
    suspend fun editNote( @Path("noteid") id:String ,@Body updadateNote: UpdateNoteResponse) : Response<UpdateNoteResponse>
-
-   @POST("notes/{noteid}")
+   @DELETE("notes/{noteid}")
    suspend fun deleteNote( @Path("noteid") id:String ) : Response<DeleteNoteResponse>
+   @POST("notes/addnote")
    suspend fun addNote( @Body addNote: AddNoteResponse) : Response<AddNoteResponse>
-   fun getNote() :  ErrorHandling<LiveData<Response<GetNoteResponse>>>
+   @GET("notes/getnote")
+   suspend fun getNote() :  Response<List<GetNoteResponse>>
 }

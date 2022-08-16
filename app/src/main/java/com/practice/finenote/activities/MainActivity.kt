@@ -27,7 +27,7 @@ class MainActivity : BaseActivity() {
         navCotroller = navHostFragment.findNavController()
         setSupportActionBar(binding.toolBar)
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.loginFragment)
+            setOf(R.id.loginFragment,R.id.homeFragment)
         )
         setupActionBarWithNavController(navCotroller, appBarConfiguration)
     }

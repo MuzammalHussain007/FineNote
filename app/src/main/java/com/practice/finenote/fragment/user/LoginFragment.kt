@@ -6,16 +6,22 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.practice.finenote.api.ErrorHandling
 import com.practice.finenote.databinding.FragmentLoginBinding
 import com.practice.finenote.fragment.BaseFragment
 import com.practice.finenote.modals.UserRequest
+import com.practice.finenote.utils.TokenManager
 import com.practice.finenote.viewModal.UserViewModal
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
+
 @AndroidEntryPoint
  class LoginFragment : BaseFragment() {
+    @Inject
+    lateinit var tokenManager: TokenManager
     private lateinit var binding: FragmentLoginBinding
     private val authenticationViewModal by viewModels<UserViewModal>()
     override fun onCreateView(
@@ -23,6 +29,12 @@ import dagger.hilt.android.AndroidEntryPoint
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        if (tokenManager.getToken()==""){
+
+        }else
+        {
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
+        }
         binding = FragmentLoginBinding.inflate(inflater, container, false);
         return binding.root;
     }
@@ -37,6 +49,7 @@ import dagger.hilt.android.AndroidEntryPoint
             dissmissDialogue()
             when (it) {
                 is ErrorHandling.Success -> {
+                    tokenManager.saveToken(it.data.token)
                     findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
                 }
                 is ErrorHandling.Error -> {

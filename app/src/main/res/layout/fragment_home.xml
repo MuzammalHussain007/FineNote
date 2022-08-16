@@ -21,13 +21,16 @@
         android:visibility="gone"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/noteaddBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_add_24"
-        android:id="@+id/noteaddBtn"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="5dp"/>
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/ic_baseline_add_24" />
 
 
 </RelativeLayout>

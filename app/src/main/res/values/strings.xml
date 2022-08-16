@@ -18,4 +18,6 @@
     <string name="add_note">Add Note</string>
     <string name="update_note">Update Note</string>
     <string name="no_notes_found">No Notes Found</string>
+    <string name="sign_in">SignIn</string>
+    <string name="signup_here">SignUp Here</string>
 </resources>

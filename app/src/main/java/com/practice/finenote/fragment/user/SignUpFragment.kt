@@ -13,11 +13,16 @@ import com.practice.finenote.databinding.FragmentLoginBinding
 import com.practice.finenote.databinding.FragmentSignUpBinding
 import com.practice.finenote.fragment.BaseFragment
 import com.practice.finenote.modals.UserRequest
+import com.practice.finenote.utils.TokenManager
 import com.practice.finenote.viewModal.UserViewModal
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
+
 @AndroidEntryPoint
  class SignUpFragment : BaseFragment() {
     private lateinit var binding: FragmentSignUpBinding
+    @Inject
+    lateinit var tokenManager: TokenManager
     private val authenticationViewModal by viewModels<UserViewModal>()
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,6 +44,8 @@ import dagger.hilt.android.AndroidEntryPoint
             dissmissDialogue()
             when (it) {
                 is ErrorHandling.Success -> {
+
+                    tokenManager.saveToken(it.data.token)
                     findNavController().navigate(SignUpFragmentDirections.actionSignUpFragmentToLoginFragment())
                 }
                 is ErrorHandling.Error -> {

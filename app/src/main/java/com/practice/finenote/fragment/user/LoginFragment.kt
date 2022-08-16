@@ -49,7 +49,7 @@ import javax.inject.Inject
             dissmissDialogue()
             when (it) {
                 is ErrorHandling.Success -> {
-                    tokenManager.saveToken(it.data.token)
+                     tokenManager.saveToken(it.data.authenticationToken)
                     findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
                 }
                 is ErrorHandling.Error -> {

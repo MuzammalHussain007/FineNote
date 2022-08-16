@@ -45,7 +45,7 @@ import javax.inject.Inject
             when (it) {
                 is ErrorHandling.Success -> {
 
-                    tokenManager.saveToken(it.data.token)
+                    tokenManager.saveToken(it.data.authenticationToken)
                     findNavController().navigate(SignUpFragmentDirections.actionSignUpFragmentToLoginFragment())
                 }
                 is ErrorHandling.Error -> {

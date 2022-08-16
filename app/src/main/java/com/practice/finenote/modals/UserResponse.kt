@@ -1,6 +1,6 @@
 package com.practice.finenote.modals
 
 data class UserResponse(
-    val token: String,
+    val authenticationToken: String,
     val user: User
 )

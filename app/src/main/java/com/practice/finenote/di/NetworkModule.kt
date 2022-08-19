@@ -1,10 +1,14 @@
 package com.practice.finenote.di
 
+import android.content.Context
+import com.practice.finenote.api.NoteAPI
 import com.practice.finenote.api.UserAPI
 import com.practice.finenote.utils.Constants.BASE_URL
+import com.readystatesoftware.chuck.ChuckInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttp
 import okhttp3.OkHttpClient
@@ -16,21 +20,33 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 @Module
 class NetworkModule {
-    private val logger : HttpLoggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-    private val okHttp : OkHttpClient.Builder = OkHttpClient.Builder().addInterceptor(logger)
+
     @Singleton
     @Provides
-    fun provideRetrofit() : Retrofit{
+    fun provideRetrofit( @ApplicationContext context: Context) : Retrofit.Builder{
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .client(okHttp.build())
+            .client(getHttpClient(context).build())
             .baseUrl(BASE_URL)
-            .build()
+    }
+
+
+    private fun getLogging() : HttpLoggingInterceptor {
+        return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+    }
+
+    private fun getHttpClient(  context : Context) : OkHttpClient.Builder {
+        return OkHttpClient.Builder().addInterceptor(getLogging()).addInterceptor(ChuckInterceptor(context))
+    }
+    @Singleton
+    @Provides
+    fun  manageServiceUser(retrofit: Retrofit.Builder) : UserAPI {
+        return retrofit.build().create(UserAPI::class.java)
     }
 
     @Singleton
     @Provides
-    fun  manageService(retrofit: Retrofit) : UserAPI {
-        return retrofit.create(UserAPI::class.java)
+    fun  manageServiceNote(retrofit: Retrofit.Builder) : NoteAPI {
+        return retrofit.build().create(NoteAPI::class.java)
     }
 }

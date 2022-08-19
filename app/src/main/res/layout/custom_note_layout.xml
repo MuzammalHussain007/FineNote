@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="#8C7F7B"
+    android:elevation="20sp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="20sp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/custom_note_id"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/note_curve"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/this_is_dummy_title"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/note_curve"
+            android:minHeight="100dp">
+
+            <TextView
+                android:id="@+id/custom_note_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+                android:padding="10dp"
+                android:text="@string/it_is_a_long_established_fact_that_a_reader_will_be_distracted_by_the_readable_content_of_a_page_when_looking_at_its_layout_the_point_of_using_lorem_ipsum_is_that_it_has_a_more_or_less_normal_distribution_of_letters_as_opposed_to_using_content_here_content_here_making_it_look_like_readable_english_many_desktop_publishing_packages_and_web_page_editors_now_use_lorem_ipsum_as_their_default_model_text_and_a_search_for_lorem_ipsum_will_uncover_many_web_sites_still_in_their_infancy"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

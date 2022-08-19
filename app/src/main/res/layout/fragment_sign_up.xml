@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_margin="5dp"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signup"
+            android:textColor="@color/teal_700"
+            android:textSize="80dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/create_a_new_account"
+            android:textColor="@color/teal_700"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:id="@+id/usernameContainer"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:hint="@string/user_name"
+        android:textColorHint="@color/teal_700"
+        app:boxStrokeColor="@color/teal_700"
+        app:endIconMode="clear_text"
+        app:hintTextColor="@color/teal_700"
+        app:startIconDrawable="@drawable/ic_round_username"
+        app:startIconTint="@color/teal_700">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/username"
+            android:textCursorDrawable="@color/teal_700" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:id="@+id/emailContainer"
+        android:hint="@string/email_address"
+        android:textColorHint="@color/teal_700"
+        app:boxStrokeColor="@color/teal_700"
+        app:hintTextColor="@color/teal_700"
+        app:endIconMode="clear_text"
+        app:startIconDrawable="@drawable/ic_baseline_email"
+        app:startIconTint="@color/teal_700">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:id="@+id/signupEmailAddress"
+            android:textCursorDrawable="@color/teal_700" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:hint="@string/password"
+        android:id="@+id/passwordContainer"
+        app:endIconMode="password_toggle"
+        android:textColorHint="@color/teal_700"
+        app:boxStrokeColor="@color/teal_700"
+        app:hintTextColor="@color/teal_700"
+        app:startIconDrawable="@drawable/ic_baseline_password"
+        app:startIconTint="@color/teal_700">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:id="@+id/signupPassword"
+            android:textCursorDrawable="@color/teal_700" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <Button
+        android:id="@+id/signupBtn"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:text="@string/sign_up"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/teal_700"
+        android:layout_gravity="center"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_here"
+        android:textColor="@color/teal_700"
+        android:layout_gravity="end"
+        android:id="@+id/changeToLogin"
+        android:layout_marginRight="10dp"/>
+
+</LinearLayout>

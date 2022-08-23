@@ -1,8 +1,5 @@
 package com.practice.finenote.api
 
-import androidx.lifecycle.LiveData
-import com.practice.finenote.modals.UserRequest
-import com.practice.finenote.modals.UserResponse
 import com.practice.finenote.responses.addNote.AddNoteResponse
 import com.practice.finenote.responses.deleteNote.DeleteNoteResponse
 import com.practice.finenote.responses.getNote.GetNoteResponse

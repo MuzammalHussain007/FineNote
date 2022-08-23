@@ -3,7 +3,9 @@ package com.practice.finenote.di
 import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
+import com.practice.finenote.api.NoteAPI
 import com.practice.finenote.api.UserAPI
+import com.practice.finenote.utils.AuthenticationInterceptor
 import com.practice.finenote.utils.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -15,6 +17,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
@@ -23,40 +26,54 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit(@ApplicationContext context: Context): Retrofit {
+    fun provideRetrofit(): Retrofit.Builder {
 
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .client(giveOkHttpClient(context).build())
             .baseUrl(BASE_URL)
-            .build()
     }
 
     @Singleton
     @Provides
-    fun manageService(retrofit: Retrofit): UserAPI {
-        return retrofit.create(UserAPI::class.java)
+    fun manageService(retrofit: Retrofit.Builder,okhttpClient :OkHttpClient.Builder): UserAPI {
+        return retrofit.client(okhttpClient.build())
+            .build().create(UserAPI::class.java)
     }
 
+    @Singleton
+    @Provides
+    fun manageServiceNote(retrofit: Retrofit.Builder,okHttpClient: OkHttpClient.Builder,interceptor: AuthenticationInterceptor): NoteAPI {
+        return retrofit.client(okHttpClient
+            .addInterceptor(interceptor).build())
+            .build()
+            .create(NoteAPI::class.java)
+    }
 
-    private fun giveLoggingInterceptor(): HttpLoggingInterceptor {
+    @Singleton
+    @Provides
+     fun giveLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
     }
 
-
-    private fun giveOkHttpClient(context: Context): OkHttpClient.Builder {
+    @Singleton
+    @Provides
+    fun giveOkHttpClient(
+        httpLoggingInterceptor: HttpLoggingInterceptor,
+        chuckerInterceptor: ChuckerInterceptor
+    ): OkHttpClient.Builder {
         return OkHttpClient
             .Builder()
-            .addInterceptor(giveLoggingInterceptor())
-            .addInterceptor(giveChunkInterceptor(context))
+            .addInterceptor(httpLoggingInterceptor)
+            .addInterceptor(chuckerInterceptor)
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .followRedirects(true)
             .followSslRedirects(true)
     }
 
-
-    private fun giveChunkInterceptor(context: Context): ChuckerInterceptor {
+    @Singleton
+    @Provides
+     fun giveChunkInterceptor(@ApplicationContext context: Context): ChuckerInterceptor {
         return ChuckerInterceptor.Builder(context)
             .collector(ChuckerCollector(context))
             .maxContentLength(250000L)

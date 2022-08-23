@@ -4,7 +4,7 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import javax.inject.Inject
 
-class AuthenticationInterceptor : Interceptor {
+class AuthenticationInterceptor @Inject constructor() : Interceptor {
     @Inject
     lateinit var tokenManager: TokenManager
     override fun intercept(chain: Interceptor.Chain): Response {

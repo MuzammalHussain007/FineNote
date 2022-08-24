@@ -1,10 +1,12 @@
 package com.practice.finenote.di
 
 import android.content.Context
+import com.chuckerteam.chucker.api.ChuckerCollector
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.practice.finenote.api.NoteAPI
 import com.practice.finenote.api.UserAPI
+import com.practice.finenote.utils.AuthenticationInterceptor
 import com.practice.finenote.utils.Constants.BASE_URL
-import com.readystatesoftware.chuck.ChuckInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,30 +25,47 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit( @ApplicationContext context: Context) : Retrofit.Builder{
+    fun provideRetrofit(okhttpClient: OkHttpClient.Builder): Retrofit.Builder {
         return Retrofit.Builder()
+            .client(okhttpClient.build())
             .addConverterFactory(GsonConverterFactory.create())
-            .client(getHttpClient(context).build())
             .baseUrl(BASE_URL)
     }
 
-
-    private fun getLogging() : HttpLoggingInterceptor {
+    @Singleton
+    @Provides
+     fun loggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
     }
 
-    private fun getHttpClient(  context : Context) : OkHttpClient.Builder {
-        return OkHttpClient.Builder().addInterceptor(getLogging()).addInterceptor(ChuckInterceptor(context))
-    }
     @Singleton
     @Provides
-    fun  manageServiceUser(retrofit: Retrofit.Builder) : UserAPI {
+     fun createHttpClient(httpLogging: HttpLoggingInterceptor): OkHttpClient.Builder {
+        return OkHttpClient.Builder().addInterceptor(httpLogging)
+    }
+
+    @Singleton
+    @Provides
+    fun manageServiceUser(retrofit: Retrofit.Builder): UserAPI {
         return retrofit.build().create(UserAPI::class.java)
     }
 
     @Singleton
     @Provides
-    fun  manageServiceNote(retrofit: Retrofit.Builder) : NoteAPI {
-        return retrofit.build().create(NoteAPI::class.java)
+    fun manageServiceNote(retrofit: Retrofit.Builder,okhttpClient:OkHttpClient.Builder,authenticationInterceptor: AuthenticationInterceptor): NoteAPI {
+        return retrofit.client(okhttpClient
+            .addInterceptor(authenticationInterceptor).build())
+            .build()
+            .create(NoteAPI::class.java)
+    }
+    @Singleton
+    @Provides
+    fun chunkerInterceptor(@ApplicationContext context: Context): ChuckerInterceptor {
+        return ChuckerInterceptor.Builder(context)
+            .collector(ChuckerCollector(context))
+            .maxContentLength(250000L)
+            .redactHeaders(emptySet())
+            .alwaysReadResponseBody(false)
+            .build()
     }
 }

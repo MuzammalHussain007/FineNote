@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">فائن نوٹ</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">ہیلو خالی ٹکڑا</string>
+    <string name="login">لاگ ان کریں</string>
+    <string name="well_come_to_the_account">خیر اکاؤنٹ کی طرف آتے ہیں۔</string>
+    <string name="user_name">صارف کا نام</string>
+    <string name="email_address">ای میل اڈریس</string>
+    <string name="password">پاس ورڈ</string>
+    <string name="sign_up">سائن اپ</string>
+    <string name="login_here">یہاں لاگ ان کریں۔</string>
+    <string name="signup">سائن اپ</string>
+    <string name="create_a_new_account">نیا اکاؤنٹ بنائیں</string>
+    <string name="this_is_dummy_title">یہ ڈمی ٹائٹل ہے۔</string>
+    <string name="it_is_a_long_established_fact_that_a_reader_will_be_distracted_by_the_readable_content_of_a_page_when_looking_at_its_layout_the_point_of_using_lorem_ipsum_is_that_it_has_a_more_or_less_normal_distribution_of_letters_as_opposed_to_using_content_here_content_here_making_it_look_like_readable_english_many_desktop_publishing_packages_and_web_page_editors_now_use_lorem_ipsum_as_their_default_model_text_and_a_search_for_lorem_ipsum_will_uncover_many_web_sites_still_in_their_infancy">یہ ایک طویل عرصے سے قائم حقیقت ہے کہ ایک قاری کسی صفحے کے پڑھنے کے قابل مواد سے اس کی ترتیب کو دیکھ کر پریشان ہو جائے گا۔ Lorem Ipsum استعمال کرنے کا نقطہ یہ ہے کہ اس میں حروف کی کم یا زیادہ عام تقسیم ہوتی ہے، جیسا کہ \'مواد یہاں، یہاں کا مواد\' استعمال کرنے کے برعکس، اسے پڑھنے کے قابل انگریزی کی طرح نظر آتا ہے۔ بہت سے ڈیسک ٹاپ پبلشنگ پیکجز اور ویب پیج ایڈیٹرز اب Lorem Ipsum کو اپنے ڈیفالٹ ماڈل ٹیکسٹ کے طور پر استعمال کرتے ہیں، اور \'lorem ipsum\' کی تلاش بہت سی ویب سائٹس کو اب بھی ان کے ابتدائی دور میں ہی کھول دے گی۔</string>
+    <string name="note_title">نوٹ ٹائٹل</string>
+    <string name="note_description">تفصیل نوٹ کریں۔</string>
+    <string name="add_note">نوٹ شامل</string>
+    <string name="update_note">اپڈیٹ نوٹ</string>
+    <string name="no_notes_found">کوئی نوٹس نہیں ملا</string>
+    <string name="sign_in">سائن ان</string>
+    <string name="signup_here">یہاں سائن اپ کریں۔</string>
+    <string name="language">زبان</string>
+    <string name="theme">خیالیہ</string>
+    <string name="chooseform">میں سے انتخاب کریں۔</string>
+    <string name="logout">لاگ آوٹ</string>
+
+</resources>

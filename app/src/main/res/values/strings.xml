@@ -20,4 +20,8 @@
     <string name="no_notes_found">No Notes Found</string>
     <string name="sign_in">SignIn</string>
     <string name="signup_here">SignUp Here</string>
+    <string name="language">Language</string>
+    <string name="theme">Theme</string>
+    <string name="chooseform">Choose From</string>
+    <string name="logout">Logout</string>
 </resources>

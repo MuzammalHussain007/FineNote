@@ -1,6 +1,4 @@
 package com.practice.finenote.activities
-
-import HomeFragmentDirections.HomeFragmentDirections
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.res.Configuration
@@ -9,10 +7,8 @@ import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -50,9 +46,9 @@ class MainActivity : BaseActivity() {
             R.id.theme -> {
                 showThemeDialog()
             }
-            R.id.logout->{
-                tokenManager.destoryAll()
-
+            R.id.logout -> {
+//                tokenManager.destoryAll()
+//                navCotroller.navigate(R.id.action_homeFragment_to_loginFragment)
             }
         }
         return item.onNavDestinationSelected(navCotroller) or super.onOptionsItemSelected(item)
@@ -95,7 +91,7 @@ class MainActivity : BaseActivity() {
     private fun showThemeDialog() {
         val themeDialog = AlertDialog.Builder(this)
         themeDialog.setTitle(getString(R.string.chooseform))
-        val themeName = arrayOf("Light Mode", "Dark Mode" , " System Default")
+        val themeName = arrayOf("Light Mode", "Dark Mode", " System Default")
         themeDialog.setItems(
             themeName
         ) { dialog, which ->
@@ -106,7 +102,7 @@ class MainActivity : BaseActivity() {
                 1 -> {
                     setNightMode()
                 }
-                2->{
+                2 -> {
                     setSystemDefaultMode()
                 }
 
@@ -124,6 +120,7 @@ class MainActivity : BaseActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         tokenManager.saveTheme("dark")
     }
+
     private fun setSystemDefaultMode() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         tokenManager.saveTheme("system")

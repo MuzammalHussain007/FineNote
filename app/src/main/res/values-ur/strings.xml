@@ -25,5 +25,7 @@
     <string name="theme">خیالیہ</string>
     <string name="chooseform">میں سے انتخاب کریں۔</string>
     <string name="logout">لاگ آوٹ</string>
+    <string name="my_notes">My Notes</string>
+    <string name="delete">Delete</string>
 
 </resources>

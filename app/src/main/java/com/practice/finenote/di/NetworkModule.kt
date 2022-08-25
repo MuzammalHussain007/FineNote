@@ -3,6 +3,7 @@ package com.practice.finenote.di
 import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
+import com.google.gson.GsonBuilder
 import com.practice.finenote.api.NoteAPI
 import com.practice.finenote.api.UserAPI
 import com.practice.finenote.utils.AuthenticationInterceptor
@@ -53,8 +54,11 @@ class NetworkModule {
     @Singleton
     @Provides
     fun manageServiceNote(retrofit: Retrofit.Builder,okhttpClient:OkHttpClient.Builder,authenticationInterceptor: AuthenticationInterceptor): NoteAPI {
+        val gson = GsonBuilder().setLenient().create()
         return retrofit.client(okhttpClient
             .addInterceptor(authenticationInterceptor).build())
+            .addConverterFactory(GsonConverterFactory.create(gson))
+
             .build()
             .create(NoteAPI::class.java)
     }

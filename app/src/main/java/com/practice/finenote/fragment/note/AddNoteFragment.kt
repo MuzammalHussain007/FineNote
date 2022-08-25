@@ -1,39 +1,69 @@
 package com.practice.finenote.fragment.note
 
 import android.os.Bundle
-import android.text.TextUtils
-import android.util.Patterns
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
-import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import com.practice.finenote.api.ErrorHandling
-import com.practice.finenote.databinding.FragmentHomeBinding
-import com.practice.finenote.databinding.FragmentLoginBinding
+import androidx.fragment.app.Fragment
+import com.google.gson.Gson
+import com.practice.finenote.R
+import com.practice.finenote.activities.MainActivity
+import com.practice.finenote.databinding.FragmentAddNoteBinding
 import com.practice.finenote.fragment.BaseFragment
-import com.practice.finenote.modals.UserRequest
-import com.practice.finenote.utils.TokenManager
-import com.practice.finenote.viewModal.UserViewModal
-import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+import com.practice.finenote.responses.noteResponse.NoteResponse
 
-@AndroidEntryPoint
-class HomeFragment : BaseFragment() {
-    private lateinit var binding: FragmentHomeBinding
+class AddNoteFragment : BaseFragment() {
+    private lateinit var binding: FragmentAddNoteBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
-
+        binding = FragmentAddNoteBinding.inflate(layoutInflater, container, false)
+        setHasOptionsMenu(true)
+        getNote()
         return binding.root
     }
 
+    private fun getNote() {
+        val jsonNote = arguments!!.get("note").toString()
+        if (jsonNote != null) {
+            val note = Gson().fromJson(jsonNote, NoteResponse::class.java)
+            if (note != null) {
+                binding.noteTitle.setText(note.title)
+                binding.noteDescription.setText(note.description)
+                val activity = activity as MainActivity
+                activity.supportActionBar?.title = "Edit Note"
+            }
+        } else {
+            val activity = activity as MainActivity
+             activity.supportActionBar?.title = "Add Note"
+        }
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        super.onPrepareOptionsMenu(menu)
+        val jsonNote = arguments!!.get("note").toString()
+        if (jsonNote != null) {
+            val note = Gson().fromJson(jsonNote, NoteResponse::class.java)
+            if (note != null) {
+                menu.findItem(R.id.deleteNote).isVisible = true
+            }
+            else
+            {
+                menu.findItem(R.id.deleteNote).isVisible = false
+
+            }
+        }
+
+    }
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
     }
+
+
 
 }

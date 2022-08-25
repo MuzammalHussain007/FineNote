@@ -25,32 +25,21 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="HomeFragment"
+        android:name="com.practice.finenote.fragment.note.HomeFragment"
         android:label="Home" >
         <action
             android:id="@+id/action_homeFragment_to_addNoteFragment"
             app:destination="@id/addNoteFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_updateFragment"
-            app:destination="@id/updateFragment" />
         <action
             android:id="@+id/action_homeFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/addNoteFragment"
-        android:name="AddNoteFragment"
+        android:name="com.practice.finenote.fragment.note.AddNoteFragment"
         android:label="AddNoteFragment" >
         <action
             android:id="@+id/action_addNoteFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/updateFragment"
-        android:name="UpdateFragment"
-        android:label="UpdateFragment" >
-        <action
-            android:id="@+id/action_updateFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

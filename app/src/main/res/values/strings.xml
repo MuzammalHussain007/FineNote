@@ -24,4 +24,6 @@
     <string name="theme">Theme</string>
     <string name="chooseform">Choose From</string>
     <string name="logout">Logout</string>
+    <string name="my_notes">My Notes</string>
+    <string name="delete">Delete</string>
 </resources>

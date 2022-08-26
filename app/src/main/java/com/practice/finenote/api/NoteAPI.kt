@@ -16,5 +16,5 @@ interface NoteAPI {
    @POST("notes/addnote")
    suspend fun addNote( @Body addNote: AddNoteResponse) : Response<AddNoteResponse>
    @GET("notes/getnote")
-   suspend fun getNote() :  Response<List<GetNoteResponse>>
+   suspend fun getNote() :  Response<GetNoteResponse>
 }

@@ -4,10 +4,23 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="@string/my_notes"
+        android:textSize="20sp"
+        android:id="@+id/myNotetitle"
+        android:layout_margin="10dp"
+        android:paddingLeft="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/noteRecyclarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/myNotetitle"
         tools:listitem="@layout/custom_note_layout" />
 
     <TextView

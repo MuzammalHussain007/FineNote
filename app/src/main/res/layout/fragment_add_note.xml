@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:gravity="top"
             android:justificationMode="inter_word"
-            android:inputType="textPassword"
+            android:inputType="textEmailAddress"
             android:minHeight="120dp"
             android:textCursorDrawable="@color/teal_700" />
     </com.google.android.material.textfield.TextInputLayout>

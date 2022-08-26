@@ -22,8 +22,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
- class HomeFragment : BaseFragment() {
+  class HomeFragment : BaseFragment() {
     private lateinit var binding: FragmentHomeBinding
     private val noteViewModal by viewModels<NoteViewModal>()
     private lateinit var noteList: ArrayList<GetNoteResponse>
@@ -61,10 +60,10 @@ import javax.inject.Inject
     private fun innit() {
         binding.noteRecyclarView.layoutManager = StaggeredGridLayoutManager(2, 1)
         noteList = ArrayList()
-//        CoroutineScope(Dispatchers.IO).launch{
-//         val response =    noteAPI.getNote()
-//            Log.d("abcd______",""+response.body().toString())
-//        }
+        CoroutineScope(Dispatchers.IO).launch{
+         val response =    noteAPI.getNote()
+            Log.d("abcd______",""+response.body().toString())
+        }
 
     }
 

@@ -35,13 +35,13 @@
     <string name="english">English</string>
     <string name="urdu">Urdu</string>
     <string-array name="theme_selection">
-        <item>@string/english</item>
-        <item>@string/urdu</item>
-    </string-array>
-
-    <string-array name="language_selection">
         <item>@string/lightMode</item>
         <item>@string/DarkMode</item>
         <item>@string/SystemDefault</item>
+    </string-array>
+
+    <string-array name="language_selection">
+        <item>@string/english</item>
+        <item>@string/urdu</item>
     </string-array>
 </resources>

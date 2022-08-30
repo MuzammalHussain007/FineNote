@@ -32,7 +32,6 @@ class SplashActivity : AppCompatActivity() {
     override fun onStart() {
         setUpLanguageAndTheme()
         super.onStart()
-
     }
     private fun setLanguage(languageName: String) {
         val myLocale = Locale(languageName)
@@ -43,7 +42,6 @@ class SplashActivity : AppCompatActivity() {
         res.updateConfiguration(conf, dm)
 
     }
-
     private fun setUpLanguageAndTheme() {
         when(tokenManager.getLanguage())
         {
@@ -71,7 +69,6 @@ class SplashActivity : AppCompatActivity() {
     private fun setLightMode() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
-
     private fun setNightMode() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
     }

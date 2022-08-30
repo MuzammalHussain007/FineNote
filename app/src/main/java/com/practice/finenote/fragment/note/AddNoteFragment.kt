@@ -52,12 +52,12 @@ class AddNoteFragment : BaseFragment() {
                 binding.noteTitle.setText(note.title)
                 binding.noteDescription.setText(note.description)
                 val activity = activity as MainActivity
-                activity.supportActionBar?.title = "Edit Note"
-                binding.addNoteBtn.text = "Update Note"
+                activity.supportActionBar?.title = requireActivity().getString(R.string.editnote)
+                binding.addNoteBtn.text =requireActivity().getString(R.string.update_note)
             }
         } else {
             val activity = activity as MainActivity
-            activity.supportActionBar?.title = "Add Note"
+            activity.supportActionBar?.title = requireActivity().getString(R.string.add_note)
         }
     }
 

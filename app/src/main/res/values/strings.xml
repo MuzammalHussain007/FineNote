@@ -27,4 +27,21 @@
     <string name="my_notes">My Notes</string>
     <string name="delete">Delete</string>
     <string name="ancd">ancd</string>
+    <string name="home">Home</string>
+    <string name="editnote">Edit Note</string>
+    <string name="lightMode">Light Mode</string>
+    <string name="DarkMode">Dark Mode</string>
+    <string name="SystemDefault">System Default</string>
+    <string name="english">English</string>
+    <string name="urdu">Urdu</string>
+    <string-array name="theme_selection">
+        <item>@string/english</item>
+        <item>@string/urdu</item>
+    </string-array>
+
+    <string-array name="language_selection">
+        <item>@string/lightMode</item>
+        <item>@string/DarkMode</item>
+        <item>@string/SystemDefault</item>
+    </string-array>
 </resources>

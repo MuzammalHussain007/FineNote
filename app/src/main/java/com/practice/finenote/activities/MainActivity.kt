@@ -1,4 +1,5 @@
 package com.practice.finenote.activities
+
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.res.Configuration
@@ -50,7 +51,7 @@ class MainActivity : BaseActivity() {
             R.id.logout -> {
 
 //                tokenManager.destoryAll()
-             }
+            }
         }
         return item.onNavDestinationSelected(navCotroller) or super.onOptionsItemSelected(item)
     }
@@ -71,7 +72,7 @@ class MainActivity : BaseActivity() {
     private fun showLanguageDialog() {
         val languageDialog = AlertDialog.Builder(this)
         languageDialog.setTitle(getString(R.string.chooseform))
-        val languageName = arrayOf("English", "Urdu")
+        val languageName = resources.getStringArray(R.array.language_selection)
         languageDialog.setItems(
             languageName
         ) { _, which ->
@@ -93,21 +94,16 @@ class MainActivity : BaseActivity() {
     private fun showThemeDialog() {
         val themeDialog = AlertDialog.Builder(this)
         themeDialog.setTitle(getString(R.string.chooseform))
-        val themeName = arrayOf("Light Mode", "Dark Mode", " System Default")
+        val themeName = resources.getStringArray(R.array.theme_selection)
         themeDialog.setItems(
             themeName
         ) { dialog, which ->
             when (which) {
-                0 -> {
-                    setLightMode()
-                }
-                1 -> {
-                    setNightMode()
-                }
-                2 -> {
-                    setSystemDefaultMode()
-                }
+                0 -> setLightMode()
 
+                1 -> setNightMode()
+
+                2 -> setSystemDefaultMode()
             }
         }
         themeDialog.show()
@@ -116,6 +112,7 @@ class MainActivity : BaseActivity() {
     private fun setLightMode() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         tokenManager.saveTheme("light")
+        setLanguage(tokenManager.getLanguage()!!)
     }
 
     private fun setNightMode() {

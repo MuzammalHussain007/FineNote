@@ -5,16 +5,18 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
+        android:id="@+id/myNotetitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/my_notes"
-        android:textSize="20sp"
-        android:id="@+id/myNotetitle"
-        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:paddingLeft="20dp"
-        android:textStyle="bold"
+        android:text="@string/my_notes"
         android:textColor="@color/black"
-        />
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/noteRecyclarView"

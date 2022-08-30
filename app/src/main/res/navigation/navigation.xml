@@ -25,7 +25,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.practice.finenote.fragment.note.HomeFragment"
-        android:label="Home" >
+        android:label="@string/home" >
         <action
             android:id="@+id/action_homeFragment_to_addNoteFragment"
             app:destination="@id/addNoteFragment" />

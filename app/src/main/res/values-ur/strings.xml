@@ -17,7 +17,7 @@
     <string name="note_title">نوٹ ٹائٹل</string>
     <string name="note_description">تفصیل نوٹ کریں۔</string>
     <string name="add_note">نوٹ شامل</string>
-    <string name="update_note">اپڈیٹ نوٹ</string>
+    <string name="update_note">نوٹ میں ترمیم کریں۔</string>
     <string name="no_notes_found">کوئی نوٹس نہیں ملا</string>
     <string name="sign_in">سائن ان</string>
     <string name="signup_here">یہاں سائن اپ کریں۔</string>
@@ -25,8 +25,28 @@
     <string name="theme">خیالیہ</string>
     <string name="chooseform">میں سے انتخاب کریں۔</string>
     <string name="logout">لاگ آوٹ</string>
-    <string name="my_notes">My Notes</string>
-    <string name="delete">Delete</string>
-    <string name="ancd">ancd</string>
+    <string name="my_notes">میرے نوٹس</string>
+    <string name="delete">حذف کریں۔</string>
+    <string name="ancd">این سی ڈی</string>
+    <string name="home">گھر</string>
+    <string name="editnote">نوٹ میں ترمیم کریں۔</string>
+
+    <string name="lightMode">لائٹ موڈ</string>
+    <string name="DarkMode">ڈارک موڈ</string>
+    <string name="SystemDefault">سسٹم ڈیفالٹ</string>
+
+    <string name="english">انگریزی</string>
+    <string name="urdu">اردو</string>
+    <string-array name="theme_selection">
+        <item>@string/english</item>
+        <item>@string/urdu</item>
+    </string-array>
+
+
+    <string-array name="language_selection">
+        <item>@string/lightMode</item>
+        <item>@string/DarkMode</item>
+        <item>@string/SystemDefault</item>
+    </string-array>
 
 </resources>

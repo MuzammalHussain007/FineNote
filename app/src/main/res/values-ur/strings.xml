@@ -38,15 +38,15 @@
     <string name="english">انگریزی</string>
     <string name="urdu">اردو</string>
     <string-array name="theme_selection">
-        <item>@string/english</item>
-        <item>@string/urdu</item>
+        <item>@string/lightMode</item>
+        <item>@string/DarkMode</item>
+        <item>@string/SystemDefault</item>
     </string-array>
 
 
     <string-array name="language_selection">
-        <item>@string/lightMode</item>
-        <item>@string/DarkMode</item>
-        <item>@string/SystemDefault</item>
+        <item>@string/english</item>
+        <item>@string/urdu</item>
     </string-array>
 
 </resources>

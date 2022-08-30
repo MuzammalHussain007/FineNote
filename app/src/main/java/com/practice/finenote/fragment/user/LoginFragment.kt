@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Patterns
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.practice.finenote.R
 import com.practice.finenote.api.ErrorHandling
 import com.practice.finenote.databinding.FragmentLoginBinding
 import com.practice.finenote.fragment.BaseFragment
@@ -29,6 +31,7 @@ import javax.inject.Inject
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        setHasOptionsMenu(true)
         if (tokenManager.getToken()==""){
 
         }else
@@ -62,6 +65,8 @@ import javax.inject.Inject
 
         }
     }
+
+
 
     private fun listener() {
         binding.changeToLoginToHomeScreen.setOnClickListener {
@@ -108,6 +113,14 @@ import javax.inject.Inject
                 e.printStackTrace()
             }
         }
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        super.onPrepareOptionsMenu(menu)
+        menu.findItem(R.id.deleteNote).isVisible = false
+        menu.findItem(R.id.theme).isVisible = false
+        menu.findItem(R.id.language).isVisible = false
+        menu.findItem(R.id.logout).isVisible = false
     }
 
 }

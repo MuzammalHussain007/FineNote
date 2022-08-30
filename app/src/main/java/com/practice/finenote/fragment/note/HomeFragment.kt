@@ -3,6 +3,7 @@ package com.practice.finenote.fragment.note
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -14,13 +15,18 @@ import com.practice.finenote.databinding.FragmentHomeBinding
 import com.practice.finenote.fragment.BaseFragment
 import com.practice.finenote.responses.getNote.Note
 import com.practice.finenote.responses.noteResponse.NoteResponse
+import com.practice.finenote.responses.noteResponse.NoteResponseForAdapter
+import com.practice.finenote.utils.TokenManager
 import com.practice.finenote.viewModal.NoteViewModal
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var noteList: ArrayList<Note>;
+    @Inject
+    lateinit var tokenManager: TokenManager
 
     private val noteViewModal by viewModels<NoteViewModal>()
     override fun onCreateView(
@@ -71,6 +77,7 @@ class HomeFragment : BaseFragment() {
                 }
                 is ErrorHandling.Success -> {
                     dissmissDialogue()
+                    noteList.clear()
                     noteList.addAll(it.data)
                     setUpRecyclarVeiw()
                 }
@@ -78,13 +85,15 @@ class HomeFragment : BaseFragment() {
         }
     }
 
-    private fun onNoteClicked(noteResponse: NoteResponse) {
+    private fun onNoteClicked(noteResponse: NoteResponseForAdapter) {
         val bundle = Bundle()
         bundle.putString("note",Gson().toJson(noteResponse))
         findNavController().navigate(R.id.action_homeFragment_to_addNoteFragment,bundle)
         Log.d("Note Title-->", "${noteResponse.title}")
         Log.d("Note Description-->", "${noteResponse.description}")
+        Log.d("Note id-->", "${noteResponse.id}")
     }
+
 
     private fun setUpRecyclarVeiw() {
         if (noteList.isNotEmpty()) {
@@ -93,6 +102,16 @@ class HomeFragment : BaseFragment() {
         } else {
             binding.errorMessage.visibility = View.VISIBLE
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.logout -> {
+                findNavController().navigate(HomeFragmentDirections.actionGlobalLoginFragment())
+                tokenManager.destoryAll()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 

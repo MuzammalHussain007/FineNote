@@ -27,5 +27,6 @@
     <string name="logout">لاگ آوٹ</string>
     <string name="my_notes">My Notes</string>
     <string name="delete">Delete</string>
+    <string name="ancd">ancd</string>
 
 </resources>

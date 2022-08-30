@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -47,12 +48,13 @@ class MainActivity : BaseActivity() {
                 showThemeDialog()
             }
             R.id.logout -> {
+
 //                tokenManager.destoryAll()
-//                navCotroller.navigate(R.id.action_homeFragment_to_loginFragment)
-            }
+             }
         }
         return item.onNavDestinationSelected(navCotroller) or super.onOptionsItemSelected(item)
     }
+
 
     private fun setLanguage(languageName: String) {
         val myLocale = Locale(languageName)
@@ -117,7 +119,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun setNightMode() {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         tokenManager.saveTheme("dark")
     }
 
@@ -138,9 +140,12 @@ class MainActivity : BaseActivity() {
             setOf(R.id.loginFragment, R.id.homeFragment)
         )
         setupActionBarWithNavController(navCotroller, appBarConfiguration)
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
         return navCotroller.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+
 }

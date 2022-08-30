@@ -1,5 +1,6 @@
 package com.practice.finenote.activities
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.Configuration
 import android.content.res.Resources
@@ -15,6 +16,7 @@ import com.practice.finenote.utils.TokenManager
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 import javax.inject.Inject
+@SuppressLint("CustomSplashScreen")
 @AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
     @Inject
@@ -35,13 +37,11 @@ class SplashActivity : AppCompatActivity() {
     private fun setLanguage(languageName: String) {
         val myLocale = Locale(languageName)
         val res: Resources = resources
-        val dm: DisplayMetrics = res.getDisplayMetrics()
-        val conf: Configuration = res.getConfiguration()
+        val dm: DisplayMetrics = res.displayMetrics
+        val conf: Configuration = res.configuration
         conf.locale = myLocale
         res.updateConfiguration(conf, dm)
-        val refresh = Intent(this, MainActivity::class.java)
-        finish()
-        startActivity(refresh)
+
     }
 
     private fun setUpLanguageAndTheme() {
@@ -73,7 +73,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun setNightMode() {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
     }
     private fun setSystemDefaultMode() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)

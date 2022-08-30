@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
     app:startDestination="@id/loginFragment">
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.practice.finenote.fragment.user.LoginFragment"
-        android:label="Login">
+        android:label="@string/login">
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
@@ -18,7 +17,7 @@
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.practice.finenote.fragment.user.SignUpFragment"
-        android:label="SignUp">
+        android:label="@string/sign_up">
         <action
             android:id="@+id/action_signUpFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
@@ -37,9 +36,14 @@
     <fragment
         android:id="@+id/addNoteFragment"
         android:name="com.practice.finenote.fragment.note.AddNoteFragment"
-        android:label="AddNoteFragment" >
+        android:label="@string/add_note">
         <action
             android:id="@+id/action_addNoteFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
-    </fragment>
+        <action
+            android:id="@+id/action_addNoteFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment><action android:id="@+id/action_global_loginFragment" app:destination="@id/loginFragment"
+    app:popUpTo="@+id/action_global_loginFragment"
+    app:popUpToInclusive="true"/>
 </navigation>

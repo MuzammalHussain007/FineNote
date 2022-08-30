@@ -17,6 +17,7 @@ private lateinit var progressDialog : ProgressDialog
         super.onCreate(savedInstanceState)
         baseActivity = activity as BaseActivity
         innitProgressDialog()
+        CreateMessage("Please Wait")
     }
     fun innitProgressDialog() {
         progressDialog = ProgressDialog(baseActivity)

@@ -7,9 +7,10 @@ import com.practice.finenote.databinding.CustomNoteLayoutBinding
 import com.practice.finenote.responses.getNote.GetNoteResponse
 import com.practice.finenote.responses.getNote.Note
 import com.practice.finenote.responses.noteResponse.NoteResponse
+import com.practice.finenote.responses.noteResponse.NoteResponseForAdapter
 
 
-class NoteAdapter(private  val list: ArrayList<Note>, private val onNoteClicked: (NoteResponse) -> Unit) : RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
+class NoteAdapter(private  val list: ArrayList<Note>, private val onNoteClicked: (NoteResponseForAdapter) -> Unit) : RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: CustomNoteLayoutBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -29,7 +30,7 @@ class NoteAdapter(private  val list: ArrayList<Note>, private val onNoteClicked:
               binding.customNoteTitle.text = this.title
               binding.customNoteDescription.text = this.description
               holder.itemView.setOnClickListener{
-                  onNoteClicked(NoteResponse(this.title,this.description))
+                  onNoteClicked(NoteResponseForAdapter(this.title,this.description,this._id))
               }
           }
       }
